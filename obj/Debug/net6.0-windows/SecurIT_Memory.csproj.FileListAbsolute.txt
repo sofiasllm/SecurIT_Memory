@@ -1,0 +1,14 @@
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.AssemblyInfoInputs.cache
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.AssemblyInfo.cs
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.csproj.CoreCompileInputs.cache
+C:\Users\ssell\Documents\SecurIT_Memory\bin\Debug\net6.0-windows\SecurIT_Memory.exe
+C:\Users\ssell\Documents\SecurIT_Memory\bin\Debug\net6.0-windows\SecurIT_Memory.deps.json
+C:\Users\ssell\Documents\SecurIT_Memory\bin\Debug\net6.0-windows\SecurIT_Memory.runtimeconfig.json
+C:\Users\ssell\Documents\SecurIT_Memory\bin\Debug\net6.0-windows\SecurIT_Memory.dll
+C:\Users\ssell\Documents\SecurIT_Memory\bin\Debug\net6.0-windows\SecurIT_Memory.pdb
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.dll
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\refint\SecurIT_Memory.dll
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.pdb
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.genruntimeconfig.cache
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\ref\SecurIT_Memory.dll
