@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecurIT_Memory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a77ec5e7cbd8c028ac0ffd493dccfff5fb5eaf2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2d6fff8d39c028386944aa2af9f353bfa316097")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecurIT_Memory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecurIT_Memory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
