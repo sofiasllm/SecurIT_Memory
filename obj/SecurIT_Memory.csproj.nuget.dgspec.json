@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ssell\\Documents\\SecurIT_Memory\\SecurIT_Memory.csproj": {}
+    "D:\\Documents\\Csharp\\SecurIT_Memory.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ssell\\Documents\\SecurIT_Memory\\SecurIT_Memory.csproj": {
+    "D:\\Documents\\Csharp\\SecurIT_Memory.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ssell\\Documents\\SecurIT_Memory\\SecurIT_Memory.csproj",
+        "projectUniqueName": "D:\\Documents\\Csharp\\SecurIT_Memory.csproj",
         "projectName": "SecurIT_Memory",
-        "projectPath": "C:\\Users\\ssell\\Documents\\SecurIT_Memory\\SecurIT_Memory.csproj",
-        "packagesPath": "C:\\Users\\ssell\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ssell\\Documents\\SecurIT_Memory\\obj\\",
+        "projectPath": "D:\\Documents\\Csharp\\SecurIT_Memory.csproj",
+        "packagesPath": "C:\\Users\\speee\\.nuget\\packages\\",
+        "outputPath": "D:\\Documents\\Csharp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ssell\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\speee\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -25,8 +25,7 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net6.0-windows": {
-            "framework": "net6.0-windows7.0",
+          "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {}
           }
@@ -40,13 +39,17 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "10.0.200"
+        }
       },
       "frameworks": {
-        "net6.0-windows": {
-          "framework": "net6.0-windows7.0",
+        "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,6 +61,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.35, 6.0.35]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -66,7 +87,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\8.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

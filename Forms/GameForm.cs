@@ -188,7 +188,16 @@ namespace SecurIT_Memory.Forms
         private void DeclencherVictoire()
         {
             gameChronoTimer.Stop();
-            ScoreManager.EnregistrerScore(secondsElapsed, gameLogic.Tentatives);
+            var user = AuthService.UtilisateurConnecte;
+            string nom = user?.Nom ?? "Agent";
+            ScoreManager.EnregistrerScore(nom, secondsElapsed, gameLogic.Tentatives);
+
+            if (user != null)
+            {
+                user.MeilleurTemps = secondsElapsed;
+                user.TotalEssais += gameLogic.Tentatives;
+                AuthService.SauvegarderUtilisateurs();
+            }
             
             MessageBox.Show($"[ACCÈS ROOT OBTENU]\n\nSystème sécurisé en {secondsElapsed}s.\nScore final: {gameLogic.Score}", 
                 "VICTOIRE", MessageBoxButtons.OK, MessageBoxIcon.Information);
