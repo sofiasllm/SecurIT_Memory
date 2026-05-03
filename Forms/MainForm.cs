@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using SecurIT_Memory.Logic;
+using SecurIT_Memory.UIComponents;
 
 namespace SecurIT_Memory.Forms
 {
@@ -15,40 +16,55 @@ namespace SecurIT_Memory.Forms
         private void InitializeComponents()
         {
             this.Text = "SecurIT Memory - Menu Principal";
-            this.Size = new Size(400, 500);
+            this.Size = new Size(400, 600);
             this.StartPosition = FormStartPosition.CenterScreen;
             this.BackColor = Color.FromArgb(15, 15, 30);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
+
+            var user = AuthService.UtilisateurConnecte;
 
             Label lblTitle = new Label
             {
                 Text = "SecurIT Memory",
                 Font = new Font("Segoe UI", 24, FontStyle.Bold),
                 ForeColor = Color.Cyan,
-                Location = new Point(0, 50),
+                Location = new Point(0, 40),
                 Size = new Size(400, 60),
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            Label lblBest = new Label
+            Label lblWelcome = new Label
             {
-                Text = $"Record : {ScoreManager.GetMeilleurScore()}",
-                Font = new Font("Segoe UI", 10, FontStyle.Italic),
-                ForeColor = Color.FromArgb(100, 200, 255),
+                Text = $"Bienvenue, {user?.Nom ?? "Agent"}",
+                Font = new Font("Segoe UI", 12, FontStyle.Bold),
+                ForeColor = Color.White,
                 Location = new Point(0, 100),
                 Size = new Size(400, 30),
                 TextAlign = ContentAlignment.MiddleCenter
             };
 
-            Button btnPlay = CreateMenuButton("JOUER", 150);
-            btnPlay.Click += (s, e) => {
-                GameForm game = new GameForm(4, 4); // Par défaut 4x4
-                game.Show();
-                this.Hide();
-                game.FormClosed += (s2, e2) => this.Show();
+            Label lblBest = new Label
+            {
+                Text = user != null ? user.ToString() : "Aucun record",
+                Font = new Font("Segoe UI", 10, FontStyle.Italic),
+                ForeColor = Color.FromArgb(100, 200, 255),
+                Location = new Point(0, 130),
+                Size = new Size(400, 30),
+                TextAlign = ContentAlignment.MiddleCenter
             };
 
-            Button btnOptions = CreateMenuButton("OPTIONS", 220);
+            CyberButton btnPlay = new CyberButton { Text = "DÉMARRER", Location = new Point(100, 200), Size = new Size(200, 50) };
+            btnPlay.Click += (s, e) => {
+                GameForm game = new GameForm(4, 4);
+                game.Show();
+                this.Hide();
+                game.FormClosed += (s2, e2) => {
+                    lblBest.Text = AuthService.UtilisateurConnecte?.ToString();
+                    this.Show();
+                };
+            };
+
+            CyberButton btnOptions = new CyberButton { Text = "DIFFICULTÉ", Location = new Point(100, 270), Size = new Size(200, 50), BackColor = Color.Transparent };
             btnOptions.Click += (s, e) => {
                 using (OptionsForm opt = new OptionsForm())
                 {
@@ -57,33 +73,23 @@ namespace SecurIT_Memory.Forms
                         GameForm game = new GameForm(opt.Rows, opt.Cols);
                         game.Show();
                         this.Hide();
-                        game.FormClosed += (s2, e2) => this.Show();
+                        game.FormClosed += (s2, e2) => {
+                            lblBest.Text = AuthService.UtilisateurConnecte?.ToString();
+                            this.Show();
+                        };
                     }
                 }
             };
-            Button btnQuit = CreateMenuButton("QUITTER", 290);
+
+            CyberButton btnLogout = new CyberButton { Text = "DÉCONNEXION", Location = new Point(100, 340), Size = new Size(200, 50), BackColor = Color.FromArgb(40, 40, 60) };
+            btnLogout.Click += (s, e) => {
+                this.Close(); // Retourne au Program.cs qui rebouclera si on veut, mais ici on ferme simplement
+            };
+
+            CyberButton btnQuit = new CyberButton { Text = "QUITTER", Location = new Point(100, 410), Size = new Size(200, 50), BackColor = Color.DarkRed };
             btnQuit.Click += (s, e) => Application.Exit();
 
-            this.Controls.Add(lblTitle);
-            this.Controls.Add(lblBest);
-            this.Controls.Add(btnPlay);
-            this.Controls.Add(btnOptions);
-            this.Controls.Add(btnQuit);
-        }
-
-        private Button CreateMenuButton(string text, int y)
-        {
-            return new Button
-            {
-                Text = text,
-                Location = new Point(100, y),
-                Size = new Size(200, 50),
-                FlatStyle = FlatStyle.Flat,
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(40, 40, 80),
-                Font = new Font("Segoe UI", 12, FontStyle.Bold),
-                Cursor = Cursors.Hand
-            };
+            this.Controls.AddRange(new Control[] { lblTitle, lblWelcome, lblBest, btnPlay, btnOptions, btnLogout, btnQuit });
         }
     }
 }

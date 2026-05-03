@@ -1,6 +1,7 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using SecurIT_Memory.UIComponents;
 
 namespace SecurIT_Memory.Forms
 {
@@ -16,48 +17,39 @@ namespace SecurIT_Memory.Forms
 
         private void InitializeComponents()
         {
-            this.Text = "Options - Taille de la Grille";
-            this.Size = new Size(300, 250);
+            this.Text = "Options - Difficulté";
+            this.Size = new Size(300, 300);
             this.StartPosition = FormStartPosition.CenterParent;
-            this.BackColor = Color.FromArgb(20, 20, 40);
+            this.BackColor = Color.FromArgb(10, 10, 25);
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
 
             Label lblInfo = new Label
             {
-                Text = "Choisissez la difficulté :",
+                Text = "SÉLECTION DU NIVEAU",
                 ForeColor = Color.Cyan,
-                Location = new Point(20, 20),
-                Size = new Size(250, 30),
-                Font = new Font("Segoe UI", 10, FontStyle.Bold)
+                Location = new Point(0, 30),
+                Size = new Size(300, 30),
+                TextAlign = ContentAlignment.MiddleCenter,
+                Font = new Font("Segoe UI", 12, FontStyle.Bold)
             };
 
-            Button btn4x4 = CreateOptionButton("Facile (4x4)", 60, 4, 4);
-            Button btn6x6 = CreateOptionButton("Difficile (6x6)", 120, 6, 6);
+            CyberButton btn4x4 = new CyberButton { Text = "FACILE (4x4)", Location = new Point(50, 80), Size = new Size(200, 50) };
+            btn4x4.Click += (s, e) => SelectDifficulty(4, 4);
+
+            CyberButton btn6x6 = new CyberButton { Text = "EXPERT (6x6)", Location = new Point(50, 150), Size = new Size(200, 50) };
+            btn6x6.Click += (s, e) => SelectDifficulty(6, 6);
 
             this.Controls.Add(lblInfo);
             this.Controls.Add(btn4x4);
             this.Controls.Add(btn6x6);
         }
 
-        private Button CreateOptionButton(string text, int y, int r, int c)
+        private void SelectDifficulty(int r, int c)
         {
-            Button btn = new Button
-            {
-                Text = text,
-                Location = new Point(50, y),
-                Size = new Size(200, 40),
-                FlatStyle = FlatStyle.Flat,
-                ForeColor = Color.White,
-                BackColor = Color.FromArgb(40, 40, 80),
-                Cursor = Cursors.Hand
-            };
-            btn.Click += (s, e) => {
-                this.Rows = r;
-                this.Cols = c;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            };
-            return btn;
+            this.Rows = r;
+            this.Cols = c;
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

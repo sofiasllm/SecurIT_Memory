@@ -31,21 +31,21 @@ namespace SecurIT_Memory.Logic
             Tentatives = 0;
 
             if (icons.Count < nbPaires)
-                throw new ArgumentException("Pas assez d'icônes pour le nombre de paires demandé.");
+                throw new ArgumentException($"Pas assez d'icônes pour {nbPaires} paires.");
 
             for (int i = 0; i < nbPaires; i++)
             {
-                // On crée deux instances de cartes avec le même ID pour former une paire
-                Cartes.Add(new Carte(i, icons[i], dos));
-                Cartes.Add(new Carte(i, icons[i], dos));
+                // On utilise la même image pour les deux cartes de la paire
+                Image facePartagee = icons[i];
+                string symb = "Symbole_" + i;
+
+                Cartes.Add(new Carte(i, symb, facePartagee, dos));
+                Cartes.Add(new Carte(i, symb, facePartagee, dos));
             }
 
             Melanger();
         }
 
-        /// <summary>
-        /// Mélange les cartes de manière aléatoire (Algorithme de Fisher-Yates).
-        /// </summary>
         private void Melanger()
         {
             int n = Cartes.Count;
@@ -53,20 +53,20 @@ namespace SecurIT_Memory.Logic
             {
                 n--;
                 int k = rng.Next(n + 1);
-                Carte value = Cartes[k];
+                Carte temp = Cartes[k];
                 Cartes[k] = Cartes[n];
-                Cartes[n] = value;
+                Cartes[n] = temp;
             }
         }
 
         /// <summary>
         /// Vérifie si deux cartes forment une paire.
         /// </summary>
-        /// <returns>True si c'est un match, False sinon.</returns>
         public bool VerifierPaire(Carte c1, Carte c2)
         {
             Tentatives++;
 
+            // Comparaison par ID pour s'assurer que c'est la même paire
             if (c1.ID == c2.ID)
             {
                 c1.Etat = EtatCarte.Trouvee;
@@ -74,21 +74,13 @@ namespace SecurIT_Memory.Logic
                 Score++;
                 return true;
             }
-            else
-            {
-                // Les cartes seront remises en état "Cachée" par le contrôleur après un délai
-                c1.Cacher();
-                c2.Cacher();
-                return false;
-            }
+
+            return false;
         }
 
-        /// <summary>
-        /// Vérifie si toutes les paires ont été trouvées.
-        /// </summary>
         public bool EstPartieTerminee(int nbPairesCibles)
         {
-            return Score == nbPairesCibles;
+            return Score >= nbPairesCibles;
         }
     }
 }

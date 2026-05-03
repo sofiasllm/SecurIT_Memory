@@ -12,3 +12,4 @@ C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\refint\SecurIT_
 C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.pdb
 C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.genruntimeconfig.cache
 C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\ref\SecurIT_Memory.dll
+C:\Users\ssell\Documents\SecurIT_Memory\obj\Debug\net6.0-windows\SecurIT_Memory.sourcelink.json

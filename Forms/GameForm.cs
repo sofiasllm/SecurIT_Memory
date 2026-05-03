@@ -187,21 +187,24 @@ namespace SecurIT_Memory.Forms
 
                     Pen neonPen = new Pen(Color.Cyan, 3);
                     
-                    // Dessin d'icônes thématiques selon l'index
-                    switch (i % 5)
+                    // Dessin d'icônes thématiques distinctes (au moins 8 nécessaires pour une grille 4x4)
+                    switch (i % 8)
                     {
                         case 0: // Cadenas
                             g.DrawRectangle(neonPen, 40, 55, 48, 40);
                             g.DrawArc(neonPen, 45, 30, 38, 50, 180, 180);
                             break;
-                        case 1: // Bouclier
+                        case 1: // Bouclier / Hexagone
                             Point[] shield = { new Point(64, 25), new Point(100, 40), new Point(100, 75), new Point(64, 105), new Point(28, 75), new Point(28, 40) };
                             g.DrawPolygon(neonPen, shield);
                             break;
-                        case 2: // Bug / Virus
-                            g.DrawEllipse(neonPen, 45, 45, 38, 38);
-                            g.DrawLine(neonPen, 30, 30, 45, 45); g.DrawLine(neonPen, 98, 98, 83, 83);
-                            g.DrawLine(neonPen, 30, 98, 45, 83); g.DrawLine(neonPen, 98, 30, 83, 45);
+                        case 2: // Serveur
+                            g.DrawRectangle(neonPen, 32, 22, 64, 84);
+                            g.DrawLine(neonPen, 32, 50, 96, 50);
+                            g.DrawLine(neonPen, 32, 78, 96, 78);
+                            g.FillEllipse(Brushes.Lime, 82, 30, 8, 8);
+                            g.FillEllipse(Brushes.Lime, 82, 58, 8, 8);
+                            g.FillEllipse(Brushes.Red,  82, 86, 8, 8);
                             break;
                         case 3: // Clé
                             g.DrawEllipse(neonPen, 35, 35, 30, 30);
@@ -209,10 +212,29 @@ namespace SecurIT_Memory.Forms
                             g.DrawLine(neonPen, 85, 50, 85, 65);
                             g.DrawLine(neonPen, 95, 50, 95, 65);
                             break;
-                        case 4: // Radar / Firewall
-                            g.DrawArc(neonPen, 25, 25, 78, 78, 225, 90);
-                            g.DrawArc(neonPen, 40, 40, 48, 48, 225, 90);
-                            g.FillEllipse(Brushes.Cyan, 60, 60, 8, 8);
+                        case 4: // WiFi (Le seul, pas de "Radar")
+                            g.DrawArc(neonPen, 14, 14, 100, 100, 210, 120);
+                            g.DrawArc(neonPen, 30, 30, 68, 68, 210, 120);
+                            g.DrawArc(neonPen, 46, 46, 36, 36, 210, 120);
+                            g.FillEllipse(Brushes.Cyan, 61, 88, 6, 6);
+                            break;
+                        case 5: // Database
+                            g.DrawEllipse(neonPen, 32, 18, 64, 22);
+                            g.DrawLine(neonPen, 32, 29, 32, 95);
+                            g.DrawLine(neonPen, 96, 29, 96, 95);
+                            g.DrawArc(neonPen, 32, 84, 64, 22, 0, 180);
+                            g.DrawArc(neonPen, 32, 52, 64, 22, 0, 180);
+                            break;
+                        case 6: // Code
+                            g.DrawLine(neonPen, 44, 35, 22, 64);
+                            g.DrawLine(neonPen, 22, 64, 44, 93);
+                            g.DrawLine(neonPen, 84, 35, 106, 64);
+                            g.DrawLine(neonPen, 106, 64, 84, 93);
+                            g.DrawLine(neonPen, 74, 22, 54, 106);
+                            break;
+                        case 7: // Password
+                            g.DrawRectangle(neonPen, 16, 44, 96, 40);
+                            g.DrawString("* * * *", new Font("Consolas", 18, FontStyle.Bold), Brushes.Cyan, new PointF(18, 48));
                             break;
                     }
                     // Bordure de la carte
